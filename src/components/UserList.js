@@ -33,7 +33,7 @@ class UserList extends Component {
     return (
       <div className="container">
         <h2 align="center" className="text-info pt-3">User List</h2>
-        <Link to={`/AddUser`} params={{ user: this.state.user}} className="btn btn-primary float-right mb-3"><span className="fa fa-plus"></span>&nbsp;Add New User</Link>
+        <Link to={`/AddUser`} params={{ user: this.state.user}} className="btn btn-primary float-right mb-3"><span className="fa fa-plus"></span>&nbsp;Create User</Link>
         <table className="table table-striped table-bordered" style={{ marginTop: 10 }}>
           <thead>
             <tr>

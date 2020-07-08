@@ -12,20 +12,27 @@ class Table extends Component {
 
   DeleteUser = () => {
     // alert('delete' + this.props.obj.id)
-    if (this.props.obj.id) {
-      axios
-        .delete("https://localhost:5001/api/users/" + this.props.obj.id)
-        .then((json) => {
-          if (json.data) {
-            // this.props.history.push("/UserList");
-            // this.router.history.push("/UserList");
-            window.location.reload();
-            alert("Record deleted successfully!!");
-          } 
-        });
-    }else {
-      alert("Some error occurs! Record is not deleted");
+    // eslint-disable-next-line no-restricted-globals
+    if(confirm("Sure want to delete?")){
+      if (this.props.obj.id) {
+        axios
+          .delete("https://localhost:5001/api/users/" + this.props.obj.id)
+          .then((json) => {
+            if (json.data) {
+              alert("Record deleted successfully!!");
+              window.location.reload();
+              // this.props.history.push("/UserList");
+              // this.router.history.push("/UserList");
+            } 
+          });
+      }else {
+        alert("Some error occurs! Record is not deleted");
+      }
     }
+    else{
+      alert("your data is safe!");
+    }
+   
   };
 
   //  debugger;
@@ -47,9 +54,11 @@ class Table extends Component {
             Delete
           </Button>
           &nbsp;
-          <Link to={"/AddUser/" + this.props.obj.id} params={{ id: this.props.obj.id }} className="btn btn-success">
+          <Link to={{ pathname: '/AddUser/'+ this.props.obj.id, state: { user: this.props.obj} }} className="btn btn-success">
+           Update </Link>
+          {/* <Link to={"/AddUser/" + this.props.obj.id} params={{ id: this.props.obj.id }} className="btn btn-success">
             Edit {this.props.obj.id}
-          </Link>
+          </Link> */}
         </td>
       </tr>
     );
