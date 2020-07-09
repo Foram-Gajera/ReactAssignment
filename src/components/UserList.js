@@ -30,21 +30,15 @@ class UserList extends Component {
     });
   }
   render() {
+    const userdata = this.state.user.map((user) => user);
     return (
       <div className="container">
         <h2 align="center" className="text-info pt-3">User List</h2>
         <Link to={`/AddUser`} params={{ user: this.state.user}} className="btn btn-primary float-right mb-3"><span className="fa fa-plus"></span>&nbsp;Create User</Link>
-        <table className="table table-striped table-bordered" style={{ marginTop: 10 }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th colSpan="4">Action</th>
-            </tr>
-          </thead>
-          <tbody>{this.tabRow()}</tbody>
-        </table>
+        {/* {tableData} */}
+        {/* {this.tabRow()} */}
+        {/* <Table obj={this.state.user.map(user=>user)} key={userdata.id}/> */}
+        <Table obj={this.state.user} />
       </div>
     );
   }
